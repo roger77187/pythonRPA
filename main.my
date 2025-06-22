@@ -8,7 +8,7 @@ import sys
 from sys import exit
 
 # 配置参数
-BUTTON_IMAGES = ['button1.png', 'button2.png', 'button3.png', 'button4.png','button5.png','button6.png']  # 按钮截图列表
+BUTTON_IMAGES = ['button1.png', 'button2.png', 'button3.png', 'button4.png']  # 按钮截图列表
 MAX_RETRIES = 200             # 总循环次数
 TIMEOUT = 120                 # 单次按钮等待超时（秒）
 CONFIDENCE = 0.8              # 图像识别置信度（需OpenCV）
@@ -31,7 +31,6 @@ def wait_and_click(image_path):
     start_time = time.time()
     while time.time() - start_time < TIMEOUT:
         try:
-            time.sleep(0.2)   # 间隔0.2秒扫描当前页面，识别跟图片匹配的按钮
             pos = pyautogui.locateOnScreen(image_path, confidence=CONFIDENCE)
             if pos:
                 pyautogui.click(pos)
